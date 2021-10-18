@@ -2,26 +2,17 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
+	"strconv"
 	"strings"
 )
 
 func main() {
-	File := strings.Split(string(ReadFile()), " ")
-	for i, char := range File {
-		if strings.Contains(char, "(hex)") {
-			File[i] = ""
+	words := strings.SplitAfter(ReadFile(), " ")
+	for _, a := range words {
+		if a == "(hex)" {
+			fmt.Print(a)
 		}
-	}
-
-	output := strings.Join(lines, "\n")
-
-	err = ioutil.WriteFile(result, []byte(output), 0644)
-	if err != nil {
-		fmt.Println("Error creating", result)
-		fmt.Println(err)
-		return
 	}
 }
 
@@ -37,5 +28,12 @@ func ReadFile() string {
 	return ""
 }
 
-func toHex() {
+func toHex(s string) string {
+	numberStr := strings.Replace(s, "0x", "", -1)
+	numberStr = strings.Replace(numberStr, "0X", "", -1)
+	n, err := strconv.ParseUint(numberStr, 16, 64)
+	if err != nil {
+		panic(err)
+	}
+	return string(rune(n))
 }
