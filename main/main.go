@@ -1,7 +1,13 @@
 package main
 
-import "gr"
+import (
+	"fmt"
+	"gr"
+)
 
 func main() {
-	gr.ReadFile()
+	File := gr.ReadFile()
+	File = gr.ToHex(File)
+	File = gr.ToBin(File)
+	fmt.Println(File)
 }
