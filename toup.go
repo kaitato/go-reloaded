@@ -7,26 +7,30 @@ import (
 func ToUp(s string) string {
 	var result string
 	words := strings.Split(s, " ")
-	for a := 0; a < len(words); a++ {
-		if a == len(words)-1 {
-			result += " " + words[a]
-		} else if !strings.Contains(words[a+1], "(up") {
-			result += " " + words[a]
-		} else if words[a+1] == "(up)" {
-			words[a] = strings.ToUpper(words[a])
-			result += " " + words[a]
-			a += 1
-		} else if words[a+1] == "(up," {
-			str := []rune(words[a+2])
-			pram := 0
-			for i := 0; i < len(str); i++ {
-				if str[i] >= '0' && str[i] <= '9' {
-					pram *= 10
-					pram += int(str[i] - 48)
+	for a := len(words) - 1; a > 0; a-- {
+		if a == 1 {
+			result = words[a] + " " + result
+		} else if !strings.Contains(words[a], ")") {
+			result = words[a] + " " + result
+		} else if words[a] == "(up)" {
+			words[a-1] = strings.ToUpper(words[a-1])
+			result = words[a-1] + " " + result
+			a -= 1
+		} else if strings.Contains(words[a], ")") {
+			if words[a-1] == "(up," {
+				str := []rune(words[a])
+				num := 0
+				for i := 0; i < len(str); i++ {
+					if str[i] >= '0' && str[i] <= '9' {
+						num *= 10
+						num += int(str[i] - 48)
+					}
 				}
-			}
-			for b := 0; b <= pram; b++ {
-				words[a-b] = strings.ToUpper(words[a-b])
+				for b := 2; b < num+2; b++ {
+					words[a-b] = strings.ToUpper(words[a-b])
+					result = words[a-b] + " " + result
+				}
+				a -= num + 2
 			}
 		}
 	}
