@@ -30,7 +30,7 @@ func ToUp(s string) string {
 					words[a-b] = strings.ToUpper(words[a-b])
 					result = words[a-b] + " " + result
 				}
-				a -= num + 2
+				a -= num + 1
 			}
 		}
 	}
