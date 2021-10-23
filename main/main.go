@@ -10,5 +10,7 @@ func main() {
 	File = gr.ToHex(File)
 	File = gr.ToBin(File)
 	File = gr.ToUp(File)
+	File = gr.ToLow(File)
+	File = gr.ToCap(File)
 	fmt.Println(File)
 }

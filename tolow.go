@@ -4,7 +4,7 @@ import (
 	"strings"
 )
 
-func ToUp(s string) string {
+func ToLow(s string) string {
 	var result string
 	words := strings.Split(s, " ")
 	for a := len(words) - 1; a > 0; a-- {
@@ -12,11 +12,11 @@ func ToUp(s string) string {
 			result = words[a] + " " + result
 		} else if !strings.Contains(words[a], ")") {
 			result = words[a] + " " + result
-		} else if words[a] == "(up)" {
-			words[a-1] = strings.ToUpper(words[a-1])
+		} else if words[a] == "(low)" {
+			words[a-1] = strings.ToLower(words[a-1])
 			result = words[a-1] + " " + result
 			a -= 1
-		} else if strings.Contains(words[a], ")") && words[a-1] == "(up," {
+		} else if strings.Contains(words[a], ")") && words[a-1] == "(low," {
 			str := []rune(words[a])
 			num := 0
 			for i := 0; i < len(str); i++ {
@@ -26,11 +26,11 @@ func ToUp(s string) string {
 				}
 			}
 			for b := 2; b < num+2; b++ {
-				words[a-b] = strings.ToUpper(words[a-b])
+				words[a-b] = strings.ToLower(words[a-b])
 				result = words[a-b] + " " + result
 			}
 			a -= num + 1
-		} else if words[a-1] != "(up," {
+		} else if words[a-1] != "(low," {
 			result = words[a] + " " + result
 		}
 	}
