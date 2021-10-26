@@ -7,7 +7,7 @@ import (
 func ToCap(s string) string {
 	var result string
 	words := strings.Split(s, " ")
-	for a := len(words) - 1; a > 0; a-- {
+	for a := len(words) - 1; a >= 0; a-- {
 		if a == 0 {
 			result = words[a] + " " + result
 		} else if !strings.Contains(words[a], ")") {

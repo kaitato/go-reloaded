@@ -9,7 +9,9 @@ func ToHex(s string) string {
 	var result string
 	words := strings.Split(s, " ")
 	for a := 0; a < len(words); a++ {
-		if a == len(words)-1 {
+		if a == 0 {
+			result += words[a]
+		} else if a == len(words)-1 {
 			result += " " + words[a]
 		} else if words[a+1] != "(hex)" {
 			result += " " + words[a]

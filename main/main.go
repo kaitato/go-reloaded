@@ -12,5 +12,6 @@ func main() {
 	File = gr.ToUp(File)
 	File = gr.ToLow(File)
 	File = gr.ToCap(File)
+	File = gr.Punctuation(File)
 	fmt.Println(File)
 }
