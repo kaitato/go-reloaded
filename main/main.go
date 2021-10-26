@@ -13,5 +13,7 @@ func main() {
 	File = gr.ToLow(File)
 	File = gr.ToCap(File)
 	File = gr.Punctuation(File)
+	File = gr.QuoMarks(File)
+	File = gr.ToA(File)
 	fmt.Println(File)
 }
