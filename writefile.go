@@ -1,5 +1,6 @@
 package gr
 
+<<<<<<< HEAD
 import (
 	"log"
 	"os"
@@ -22,4 +23,10 @@ func WriteFile(s string) {
 		log.Fatal(err2)
 	}
 
+=======
+import "os"
+
+func WriteFile(s string) {
+	os.WriteFile("result.txt", s)
+>>>>>>> fb5f9ff10a8ccd2ba48d534c07c74c3e617170b9
 }
