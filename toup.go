@@ -10,6 +10,8 @@ func ToUp(s string) string {
 	for a := len(words) - 1; a >= 0; a-- {
 		if a == 0 {
 			result = words[a] + " " + result
+		} else if a == len(words) {
+			result += words[a]
 		} else if !strings.Contains(words[a], ")") {
 			result = words[a] + " " + result
 		} else if words[a] == "(up)" {

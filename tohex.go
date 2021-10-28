@@ -22,7 +22,7 @@ func ToHex(s string) string {
 			numberStr = strings.Replace(numberStr, stringa, "", -1)
 			n, _ := strconv.ParseInt(numberStr, 16, 64)
 			m := strconv.FormatInt(n, 10)
-			result = result + " " + m
+			result += " " + m
 			a += 1
 		}
 	}

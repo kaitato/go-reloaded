@@ -17,6 +17,7 @@ func Punctuation(s string) string {
 				switch c {
 				case '.', ',', '!', '?', ':', ';':
 					result += string(c) + " "
+
 				}
 				if c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z' {
 					result += string(c)
