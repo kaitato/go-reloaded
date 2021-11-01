@@ -8,7 +8,7 @@ func ToA(s string) string {
 	for a := len(words) - 1; a >= 0; a-- {
 		if a == 0 {
 			result = words[a] + " " + result
-		} else if a == len(words) {
+		} else if a == len(words)-1 {
 			result += words[a]
 		} else if words[a] != "A" && words[a] != "a" {
 			result = words[a] + " " + result
